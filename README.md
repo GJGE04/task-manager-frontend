@@ -1,70 +1,161 @@
-# Getting Started with Create React App
+# "Task Manager"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una aplicación de gestión de tareas que permite a los usuarios crear, editar, eliminar y marcar tareas como completadas o pendientes. 
+A su vez está implementada en dos proyectos:
 
-## Available Scripts
+1. **Backend**: API creada en Node.js interactuando con base de datos en MongoDB.
+2. **Frontend**: Aplicación React.js que consume del backend API para mostrar datos e interactuar con el usuario.
 
-In the project directory, you can run:
+## Project Structure 
 
-### `npm start`
+El proyecto está organizado en dos carpetas fundamentales:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `\task-manager-backend`	: Contiene la API en Node.js.
+- `\task-manager-frontend`	: Contiene la aplicación en React.js.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tecnologías usadas
 
-### `npm test`
+- **Backend**:
+  - Node.js
+  - Express.js
+  - MongoDB
+  - Swagger
+  - Postman
+  
+- **Frontend**:
+  - React.js
+  - React Router
+  - Hooks (useState, useEffect)
+  - Chakra UI
+  - Context API
+  
+- **Otras herramientas**:
+  - Axios para realizar las peticiones HTTP.
+  - dotenv para la configuración de variables de entorno.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Características
+- CRUD de tareas: Crear, leer, actualizar y eliminar tareas.
+- Visualizar la lista de tareas en una interfaz intuitiva y moderna.
+- Marcar tareas como completadas o pendientes.
 
-### `npm run build`
+## Requisitos
+Node.js (v18 o superior)
+MongoDB (Local)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Node.js** 
+- **MongoDB**		
+- **Visual Studio** 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Frontend
 
-### `npm run eject`
+- **Node.js** (versión 18 o superior)
+- **NPM** (viene con Node.js)
+- **Visual Studio Code**
+- **Google chrome browser**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Instalación y Configuración
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clonar el Repo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Clonar los repositorios al equipo local:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash 
+git clone https://github.com/GJGE04/task-manager-backend
+git clone https://github.com/GJGE04/task-manager-frontend
+```
+### 2. Dependencias 
 
-## Learn More
+#### Backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Para crear la estructura de la base de datos utilizando MongoDB y Mongoose en tu backend, seguir estos pasos:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Navegar al directorio backend y ejecuta el siguiente comando:
 
-### Code Splitting
+	npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Instalar dependencias
+	Primero, se necesita instalar Mongoose (la librería que nos permite interactuar con MongoDB) y dotenv (para manejar las variables de entorno, como la URI de conexión de MongoDB).
+	Ejecuta los siguientes comandos en la terminal:
+	
+			npm install mongoose dotenv
+				
+				ó todas las dependencias para trabajar con Express, Mongoose y manejo de variables de entorno
+				
+			npm install express mongoose dotenv body-parser cors express-validator	
+				
+3. En un archivo .env en la raíz del directorio backend tener configurado el Puerto y las siguientes variables de entorno:
 
-### Analyzing the Bundle Size
+	MONGODB_URI=mongodb://localhost:27017/task-manager
+	PORT=5000
+				
+4. Configuración de la conexión a MongoDB
+	En el archivo raíz del backend (por ejemplo, server.js o app.js), configurar la conexión a MongoDB.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+	Primero, se crea un archivo .env en la raíz del proyecto para almacenar la URI de conexión de MongoDB:
+	
+	MONGO_URI=mongodb://localhost:27017/task-manager
+	
+	Este es un ejemplo de una URI para una base de datos local. Si estás usando un servicio como MongoDB Atlas, 
+	la URI será algo así como 		  	mongodb+srv://<usuario>:<contraseña>@cluster.mongodb.net/<nombre-de-tu-db>.
+	
+#### Frontend
 
-### Making a Progressive Web App
+1. Navega al directorio frontend y ejecuta el siguiente comando:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+		npm install
+	
+2. Instalar otras dependencias necesarias, por ejemplo:
 
-### Advanced Configuration
+	- instalar axios (para las peticiones HTTP) y @chakra-ui/react (para los componentes de UI)
+	
+		npm install axios @chakra-ui/react @emotion/react @emotion/styled
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+	- Jest para pruebas unitarias
+		
+		npm install --save-dev jest supertest
+		
+	- Para correr pruebas unitarias:
+	
+		npm test
+		
+		npm test -- --coverage
+	
+### 3. Iniciar la aplicación 
 
-### Deployment
+#### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Tener iniciado el servidor de MongoDB:
 
-### `npm run build` fails to minify
+	net start MongoDB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. En el directorio backend, ejecuta el siguiente comando para iniciar el servidor:
+
+	npm start
+	
+El backend se ejecutará en http://localhost:5000.
+	
+#### Frontend
+
+1. En el directorio frontend, ejecuta el siguiente comando para iniciar el servidor:
+
+El frontend estará disponible en http://localhost:3000.
+
+### 4. Endpoints en el Backend
+
+- GET /api/tasks: Obtiene todas las tareas.
+- POST /api/tasks: Crea una nueva tarea.
+- GET /api/tasks/:id: Devuelve los detalles de una tarea específica.
+- PUT /api/tasks/:id: Actualiza una tarea existente (por ejemplo, marcarla como completada).
+- DELETE /api/tasks/:id: Elimina una tarea existente.  
+
+### 4. Consideraciones
+
+- Se escribieron pruebas unitarias para el backend (con Jest)
+- El frontend permite filtrar las tareas por su estado: Completadas o Pendientes.
+
+
+
+
+
